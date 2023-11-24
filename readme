@@ -1,4 +1,3 @@
-
 JoinQueryPSQL_SciDB.java is employed for combining PostgreSQL (psql) and SciDB. JoinQueryPSQL_Scidb_simulation.java is utilized to simulate multiple users interacting with PostgreSQL and SciDB concurrently. 
 JoinQueryPSQL_Accumulo.java is designed for joining PostgreSQL and Accumulo. SynchronizedThreadStart.java is implemented to simulate multiple users concurrently engaging in a diverse set of queries.
 The "repeatpwd" script is designed to execute various queries multiple times (1, 2, 4, 8, 16, 32, up to 256) and store the results in files like "test_2localhost.txt" and "test_4localhost.txt." 
