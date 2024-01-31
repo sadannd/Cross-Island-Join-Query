@@ -11,7 +11,7 @@ public class JoinQueryPSQL_SciDB {
 
 	public static void main(String[] args) {
 
-        String curlCommand = "curl -X POST -d \"bdarray(filter(TABLE_NAME,i<4));\""+" http:/IP_ADDRESS:8080/bigdawg/query/>scidb.txt";
+        String curlCommand = "curl -X POST -d \"bdarray(filter(TABLE_NAME,i<4));\""+" http:/IP_ADDRESS:8080/bigdawg/query/>fileName.txt";
         ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", curlCommand);
 
         //ProcessBuilder processBuil der = new ProcessBuilder("/bin/bash", "-c", curlCommand);
@@ -24,7 +24,7 @@ public class JoinQueryPSQL_SciDB {
 		}
         
         List<String> lines = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("scidb.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("fileName.txt"))) {
             // Read lines and add them to the list
             String line;
             while ((line = br.readLine()) != null) {
@@ -40,7 +40,7 @@ public class JoinQueryPSQL_SciDB {
         System.out.println();
         
         
-        curlCommand = "curl -X POST -d \"bdrel(select * from TABLE_NAME;)\""+" http:/IP_ADDRESS:8080/bigdawg/query/>attribute.txt";
+        curlCommand = "curl -X POST -d \"bdrel(select * from TABLE_NAME;)\""+" http:/IP_ADDRESS:8080/bigdawg/query/>fileName_2.txt";
         processBuilder = new ProcessBuilder("cmd.exe", "/c", curlCommand);
 
         //ProcessBuilder processBuil der = new ProcessBuilder("/bin/bash", "-c", curlCommand);
@@ -55,7 +55,7 @@ public class JoinQueryPSQL_SciDB {
         
         HashMap<String, String> attributeName_desc = new HashMap<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("attribute.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("fileName_2.txt"))) {
             while ((line = br.readLine()) != null) {
                 String[] parts_attributes = line.split("\t");
                 attributeName_desc.put(parts_attributes[2].trim(), parts_attributes[4].trim());
