@@ -47,7 +47,7 @@ class Worker1 implements Runnable {
             // Your thread's work goes here
             System.out.println("Thread started.");
                 
-            //String curlCommand = "curl -X POST -d \"bdarray(filter(events1,i>0));\" http://192.168.0.72:8080/bigdawg/query/>>a"+Thread.currentThread().getName()+".txt";
+            //String curlCommand = "curl -X POST -d \"bdarray(filter(TABLE_NAME,i>0));\" http://localhost:8080/bigdawg/query/>>a"+Thread.currentThread().getName()+".txt";
             //1.Scidb inside Scidb
             String curlCommand1 = "curl -X POST -d \"bdarray(filter(TABLE_NAME,i>0));\""+" http:/IP_ADDRESS:8080/bigdawg/query/ -w " +
                     "'{'\"content_type\":\"%{content_type}\",\"filename_effective\":\"%{filename_effective}\"," +
@@ -84,7 +84,7 @@ class Worker1 implements Runnable {
                     "\"url_effective\":\"%{url_effective}\"'}>>a"+Thread.currentThread().getName()+".txt";
             
             //3.Scidb to psql
-            String curlCommand5 = "curl -X POST -d \"bdrel(select * from bdcast( bdarray(filter(TABLE_NAME,i>15000)), tab"+Thread.currentThread().getName()+",'(COLUMNS LIST WITH DATATYPE)', relational))\""+" http:/192.168.0.72:8080/bigdawg/query/ -w " +
+            String curlCommand5 = "curl -X POST -d \"bdrel(select * from bdcast( bdarray(filter(TABLE_NAME,i>15000)), tab"+Thread.currentThread().getName()+",'(COLUMNS LIST WITH DATATYPE)', relational))\""+" http://localhost:8080/bigdawg/query/ -w " +
                     "'{'\"content_type\":\"%{content_type}\",\"filename_effective\":\"%{filename_effective}\"," +
                     "\"ftp_entry_path\":\"%{ftp_entry_path}\",\"http_code\":\"%{http_code}\",\"http_connect\":\"%{http_connect}\"," +
                     "\"http_version\":\"%{http_version}\",\"local_ip\":\"%{local_ip}\",\"local_port\":\"%{local_port}\"," +
@@ -101,7 +101,7 @@ class Worker1 implements Runnable {
                     "\"url_effective\":\"%{url_effective}\"'}>>a"+Thread.currentThread().getName()+".txt";
             
             //4.psql to scidb
-            String curlCommand2 = "curl -X POST -d \"bdarray(scan(bdcast(bdrel(SELECT * FROM events6scidb limit1), newarray2, '<COLUMNS LIST WITH DATATYPE>[i=0:*,10000000,0]',array)));\""+" http:/192.168.0.72:8080/bigdawg/query/ -w " +
+            String curlCommand2 = "curl -X POST -d \"bdarray(scan(bdcast(bdrel(SELECT * FROM events6scidb limit1), newarray2, '<COLUMNS LIST WITH DATATYPE>[i=0:*,10000000,0]',array)));\""+" http://localhost:8080/bigdawg/query/ -w " +
                     "'{'\"content_type\":\"%{content_type}\",\"filename_effective\":\"%{filename_effective}\"," +
                     "\"ftp_entry_path\":\"%{ftp_entry_path}\",\"http_code\":\"%{http_code}\",\"http_connect\":\"%{http_connect}\"," +
                     "\"http_version\":\"%{http_version}\",\"local_ip\":\"%{local_ip}\",\"local_port\":\"%{local_port}\"," +
