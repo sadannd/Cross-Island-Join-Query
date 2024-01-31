@@ -13,7 +13,7 @@ public class JoinQueryPSQL_Accumulo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String curlCommand = "curl -X POST -d \"bdtext({ 'op' : 'scan', 'table' : 'TABLE_NAME'});\" http:/IP_ADDRESS:8080/bigdawg/query/>accumlo.txt";
+		String curlCommand = "curl -X POST -d \"bdtext({ 'op' : 'scan', 'table' : 'TABLE_NAME'});\" http:/IP_ADDRESS:8080/bigdawg/query/>fileName.txt";
 
 		ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", curlCommand);
 
@@ -28,7 +28,7 @@ public class JoinQueryPSQL_Accumulo {
         Set<String> columnNames = new HashSet<>();
 
         List<String> lines = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("accumlo.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("fileName.txt"))) {
             // Read lines and add them to the list
             String line;
             while ((line = br.readLine()) != null) {
